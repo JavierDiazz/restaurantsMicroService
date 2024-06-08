@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: restaurants-microservice-deployment
+  labels:
+    app: restaurants-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: restaurants-microservice
+  template:
+    metadata:
+      labels:
+        app: restaurants-microservice
+    spec:
+      containers:
+      - name: restaurants-microservice
+        image: javierdiaz01/restaurants-microservice:v1.0.0
+        ports:
+        - containerPort: 8000
